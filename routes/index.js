@@ -51,7 +51,8 @@ db.collection('SIAKNG-IMAGES').insertOne(finalImg, (err, result) => {
 
     if (err) return console.log(err)
     console.log('saved to database')
-    res.redirect('/api')
+    // res.redirect('/api')
+    res.send('success.')
   })
 })
 
