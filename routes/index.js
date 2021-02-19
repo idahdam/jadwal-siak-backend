@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 const db = mongoose.connection
+var ObjectId = mongoose.Types.ObjectId();
 const { routes } = require('../app');
 const User = require('../models/index')
 const Upload = require('../middleware/server')
@@ -25,8 +26,8 @@ router.get('/api/photos', (req, res) => {
 
 router.get('/api/photo/:id', (req, res) => {
     var filename = req.params.id;
-    
-    db.collection('quotes').findOne({'_id': ObjectId(filename) }, (err, result) => {
+    console.log(req.params.id)
+    db.collection('quotes').findOne({'_id': mongoose.Types.ObjectId(filename) }, (err, result) => {
     
         if (err) return console.log(err)
     
