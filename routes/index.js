@@ -19,12 +19,11 @@ router.get('/api/photos', (req, res) => {
                 console.log(imgArray);
     
        if (err) return console.log(err)
-       res.send(imgArray)
-    
+       res.send(imgArray)   
     })
 });
 
-router.get('/api/photo/:id', (req, res) => {
+router.get('/api/photos/:id', (req, res) => {
     var filename = req.params.id;
     console.log(req.params.id)
     db.collection('quotes').findOne({'_id': mongoose.Types.ObjectId(filename) }, (err, result) => {
