@@ -26,28 +26,26 @@ router.get('/api/photos', (req, res) => {
 router.get('/api/photo/:id', (req, res) => {
     var filename = req.params.id;
     
-    db.collection('mycollection').findOne({'_id': ObjectId(filename) }, (err, result) => {
+    db.collection('quotes').findOne({'_id': ObjectId(filename) }, (err, result) => {
     
         if (err) return console.log(err)
     
        res.contentType('image/jpeg');
        res.send(result.image.buffer)
-      
-       
     })
 })
 
 
-router.post('/api/upload', Upload.single('myImage'), (req, res) => {
+router.post('/api/upload', Upload.single('image'), (req, res) => {
     var img = fs.readFileSync(req.file.path);
-    var encode_image = img.toString('base64');
-    // Define a JSONobject for the image attributes for saving to database
+ var encode_image = img.toString('base64');
+ // Define a JSONobject for the image attributes for saving to database
  
  var finalImg = {
       contentType: req.file.mimetype,
       image:  new Buffer(encode_image, 'base64')
    };
-db.collection('quotes').insertOne(finalImg, (err, result) => {
+db.collection('SIAKNG-IMAGES').insertOne(finalImg, (err, result) => {
   	// console.log(result)
 
     if (err) return console.log(err)
