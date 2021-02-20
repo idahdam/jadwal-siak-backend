@@ -28,9 +28,6 @@ mongoose.connection.once('open', function(){
 });
 app.use(bodyParser.urlencoded())
 
-// app.use(fileUpload({
-//   createParentPath: true
-// }))
 app.use(cors())
 app.use(morgan('dev'))
 
