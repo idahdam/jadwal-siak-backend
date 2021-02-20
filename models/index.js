@@ -1,19 +1,11 @@
 var mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const userSchema = new Schema({
-    name: {
-        type: String,
-    },
-    age: {
-        type: Number
-    },
-    areYouStraight: {
-        type: Boolean,
-        default: true
-    }
-})
+const Image = mongoose.model(
+    'image',
+    mongoose.Schema({
+      imageUrl: String
+    })
+);
 
-var User = mongoose.model('User', userSchema)
-
-module.exports = User;
+module.exports = Image;
